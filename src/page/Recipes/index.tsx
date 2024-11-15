@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useCounter, { useActions } from "../../store/useConter";
-import { Button, Modal, Typography } from "@mui/material";
-import DetailModal from "../../component/DetailModal";
+import { Box, Button, Modal, Typography } from "@mui/material";
 
 const RecipesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +10,7 @@ const RecipesPage = () => {
 
   const handleDetails = (item: any) => {
     fetchApiDatabyId(`https://dummyjson.com/recipes/${item?.id}`);
-    setIsOpen(true)
+    setIsOpen(true);
   };
   useEffect(() => {
     fetchApiData("https://dummyjson.com/recipes");
@@ -21,7 +20,31 @@ const RecipesPage = () => {
     <div className="w-full bg-white">
       <h1>Recipes Lest Page</h1>
       <div>
-     <DetailModal getDetail={detailData}  isOpen={isOpen}/>
+        <Modal open={isOpen}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "10%",
+              left: "20%",
+              height: 300,
+              width: 400,
+              bgcolor: "white",
+              boxShadow: 24,
+              textAlign: "center",
+            }}
+            className="bg-slate-400"
+          >
+            <img
+              src={detailData?.image}
+              alt={detailData?.name}
+              className=" object-cover"
+            />
+            <Typography>{detailData?.name}</Typography>
+            <Button variant="contained" onClick={() => setIsOpen(false)}>
+              Close
+            </Button>
+          </Box>
+        </Modal>
       </div>
 
       <div className="grid grid-cols-4 gap-4 px-4 py-4">
