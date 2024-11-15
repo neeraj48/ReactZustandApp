@@ -25,22 +25,28 @@ const RecipesPage = () => {
             sx={{
               position: "absolute",
               top: "10%",
-              left: "20%",
-              height: 300,
-              width: 400,
-              bgcolor: "white",
+              left: "30%",
+              height: '80%',
+              width: '40%',
+              // bgcolor: "white",
               boxShadow: 24,
               textAlign: "center",
             }}
-            className="bg-slate-400"
+            className="bg-slate-200 rounded-md"
           >
             <img
               src={detailData?.image}
               alt={detailData?.name}
-              className=" object-cover"
+              className="h-[350px] w-full object-cover m-auto shadow-2xl"
             />
-            <Typography>{detailData?.name}</Typography>
-            <Button variant="contained" onClick={() => setIsOpen(false)}>
+            <Typography className="text-gray-700 py-5">
+              <p>{detailData?.name}</p>
+              <p>Cooking Time: {detailData?.cookTimeMinutes} mins</p>
+              <p>Dish Type : {detailData?.cuisine}</p>
+              <p>Time To Eat : {detailData?.mealType}</p>
+              <p>Calories : {detailData?.caloriesPerServing}</p>
+              </Typography>
+            <Button className="mt-5" variant="contained" onClick={() => setIsOpen(false)}>
               Close
             </Button>
           </Box>

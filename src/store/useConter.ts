@@ -5,7 +5,7 @@ const useCounter = create((set) => {
   return {
     countValue: 10,
     data: [],
-    detailData:[],
+    detailData: [],
     loading: true,
     error: null,
     actions: {
